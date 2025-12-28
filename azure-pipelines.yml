@@ -23,8 +23,6 @@ variables:
         value: $(git rev-parse HEAD~1)
   - name: HEAD_SHA
     value: $(git rev-parse HEAD)
-  - name: NX_CLOUD_ACCESS_TOKEN
-    value: $(NX_CLOUD_ACCESS_TOKEN)
 
 jobs:
   - job: main
