@@ -9,15 +9,22 @@ variables:
   - group: nctdev-vars
   - name: CI
     value: 'true'
-  ${{ if eq(variables['Build.Reason'], 'PullRequest') }}:
-    NX_BRANCH: $(System.PullRequest.PullRequestNumber)
-    TARGET_BRANCH: $[replace(variables['System.PullRequest.TargetBranch'],'refs/heads/','origin/')]
-    BASE_SHA: $(git merge-base $(TARGET_BRANCH) HEAD)
-  ${{ if ne(variables['Build.Reason'], 'PullRequest') }}:
-    NX_BRANCH: $(Build.SourceBranchName)
-    BASE_SHA: $(git rev-parse HEAD~1)
-  HEAD_SHA: $(git rev-parse HEAD)
-  NX_CLOUD_ACCESS_TOKEN : $(NX_CLOUD_ACCESS_TOKEN)
+  - ${{ if eq(variables['Build.Reason'], 'PullRequest') }}:
+    - name: NX_BRANCH
+      value: $(System.PullRequest.PullRequestNumber)
+    - name: TARGET_BRANCH
+      value: $[replace(variables['System.PullRequest.TargetBranch'],'refs/heads/','origin/')]
+    - name: BASE_SHA
+      value: $(git merge-base $(TARGET_BRANCH) HEAD)
+  - ${{ if ne(variables['Build.Reason'], 'PullRequest') }}:
+    - name: NX_BRANCH
+      value: $(Build.SourceBranchName)
+    - name: BASE_SHA
+      value: $(git rev-parse HEAD~1)
+  - name: HEAD_SHA
+    value: $(git rev-parse HEAD)
+  - name: NX_CLOUD_ACCESS_TOKEN
+    value: $(NX_CLOUD_ACCESS_TOKEN)
 
 
 
