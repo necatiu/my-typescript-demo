@@ -18,5 +18,10 @@
   "dependencies": {
     "tslib": "^2.3.0",
     "@org/animal": "*"
+  },
+  "nx": {
+    "tags": [
+      "scope:zoo"
+    ]
   }
 }

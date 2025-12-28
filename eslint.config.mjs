@@ -37,6 +37,14 @@ export default [
               sourceTag: 'scope:strings',
               onlyDependOnLibsWithTags: ['scope:shared', 'scope:strings'],
             },
+            {
+              sourceTag: 'scope:animal',
+              onlyDependOnLibsWithTags: ['scope:shared', 'scope:animal'],
+            },
+            {
+              sourceTag: 'scope:zoo',
+              onlyDependOnLibsWithTags: ['scope:shared', 'scope:animal', 'scope:zoo'],
+            },
           ],
         },
       ],
